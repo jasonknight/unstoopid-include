@@ -15,8 +15,16 @@ function unstoopid_include_init() {
   add_shortcode('unstoopid_include', 'unstoopid_include_shortcode');
   register_post_type( 'unstoopid_partial', array(
     'labels' => array (
-      'name' => __('Partials'),
-      'singular_name' => __('Partial'),
+      'name' => __('Partials','unstoopid_include'),
+      'singular_name' => __('Partial','unstoopid_include'),
+      'add_new' => __('Add New','unstoopid_include'),
+      'add_new_item' => __('Add New Partial','unstoopid_include'),
+      'all_items' => __('All Partials','unstoopid_include'),
+      'view_item' => __('View Partial','unstoopid_include'),
+      'search_items' => __('Search Partials','unstoopid_include'),
+      'not_found' => __('No partials found','unstoopid_include'),
+      'not_found_in_trash' => __('No partials found in trash','unstoopid_include'),
+      'menu_name' => __('Partials','unstoopid_include')
     ),
     'public' => true,
     'has_archive' => false,
