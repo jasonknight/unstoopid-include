@@ -15,8 +15,8 @@ function unstoopid_include_init() {
   add_shortcode('unstoopid_include', 'unstoopid_include_shortcode');
   register_post_type( 'unstoopid_partial', array(
     'labels' => array (
-      'name' => __('Unstoopid Partials'),
-      'singular_name' => __('Unstoopid Partial'),
+      'name' => __('Partials'),
+      'singular_name' => __('Partial'),
     ),
     'public' => true,
     'has_archive' => false,
