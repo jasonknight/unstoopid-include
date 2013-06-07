@@ -29,33 +29,22 @@ function unstoopid_include_shortcode($attr) {
 
 	if ( ! empty( $attr['ids'] ) ) {
 		// 'ids' is explicitly ordered, unless you specify otherwise.
-		if ( empty( $attr['orderby'] ) )
+		if ( empty( $attr['orderby'] ) ) {
 			$attr['orderby'] = 'post__in';
+	  }
 		$attr['include'] = $attr['ids'];
+		unset($attr['ids']);
 	}
 
-	// Allow plugins/themes to override the default gallery template.
-	$output = apply_filters('post_gallery', '', $attr);
-	if ( $output != '' )
-		return $output;
+	$attr['post_status'] = array('publish','private','protected');
+  $attr['post_type'] = array('post','page');
 
-	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-	if ( isset( $attr['orderby'] ) ) {
-		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-		if ( !$attr['orderby'] )
-			unset( $attr['orderby'] );
-	}
-
-	extract(shortcode_atts(array(
-		'order'      => 'ASC',
-		'orderby'    => 'menu_order ID',
-		'include'    => '',
-		'exclude'    => ''
-	), $attr));
 
   $posts = get_posts( $attr );
-	print_r($posts);
-	die;
+	$output = '';
+	foreach ( $posts as $post ) {
+	  $output .= $post->post_content;
+	}
 	return $output;
 }
 
