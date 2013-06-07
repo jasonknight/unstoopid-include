@@ -53,7 +53,8 @@ function unstoopid_include_shortcode($attr) {
 		'exclude'    => ''
 	), $attr));
 
-	print_r($attr);
+  $posts = get_posts( $attr );
+	print_r($posts);
 	die;
 	return $output;
 }
