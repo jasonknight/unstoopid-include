@@ -13,6 +13,15 @@ Author URI: http://red-e.eu
 */
 function unstoopid_include_init() {
   add_shortcode('unstoopid_include', 'unstoopid_include_shortcode');
+  register_post_type( 'unstoopid_partial', array(
+    'labels' => array (
+      'name' => __('Unstoopid Partials'),
+      'singular_name' => __('Unstoopid Partial'),
+    ),
+    'public' => true,
+    'has_archive' => false,
+    'publicly_queryable' => false,
+  ));
 }
 
 function unstoopid_include_enqueue_scripts() {
@@ -37,7 +46,7 @@ function unstoopid_include_shortcode($attr) {
 	}
 
 	$attr['post_status'] = array('publish','private','protected');
-  $attr['post_type'] = array('post','page');
+  $attr['post_type'] = array('unstoopid_partial');
 
 
   $posts = get_posts( $attr );
