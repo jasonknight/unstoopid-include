@@ -1,0 +1,24 @@
+.simple-overlay-close { 
+  width: 30px; 
+  height: 30px; 
+  background: url(../images/prettyPhoto/default/sprite.png) 2px 1px no-repeat; cursor: pointer; 
+  line-height:22px;
+	text-indent: -10000px;
+	width: 30px;
+	display: inline-block;
+} /* Close button */
+.simple-overlay-shown {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border: 2px solid black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  color: white;
+  
+}
+
+.simple-overlay-shown .gallery-caption {
+  margin-top: 20px;
+  font-size: 120%;
+}
