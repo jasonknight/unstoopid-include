@@ -62,7 +62,7 @@ function unstoopid_include_shortcode($attr) {
 	foreach ( $posts as $post ) {
 	  $output .= $post->post_content;
 	}
-	return $output;
+	return do_shortcode($output);
 }
 
 add_action("init","unstoopid_include_init",10);
