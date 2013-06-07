@@ -1,11 +1,11 @@
 <?php
 /**
- * @package UnstoopidGallery
+ * @package UnstoopidInclude
  * @version 0.1
  */
 /*
 Plugin Name: Unstoopid Include
-Plugin URI: http://wordpress.org/extend/plugins/unstoopid-gallery/
+Plugin URI: http://wordpress.org/extend/plugins/unstoopid-include/
 Description: A simple, hassle free way to include post content into another. No weird interfaces, no extra features.
 Author: Jason Martin
 Version: 0.1
