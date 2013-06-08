@@ -17,6 +17,9 @@ require_once( plugin_dir_path(__FILE__) . 'classes/class-unstoopid-include-widge
 function unstoopid_widgets_init() {
   register_widget( 'Widget_UnstoopidInclude' );
 }
+function unstoopid_disable_richedit( $default ) {
+  return false;
+}
 function unstoopid_include_init() {
   
   add_shortcode('unstoopid_include', 'unstoopid_include_shortcode');
@@ -41,7 +44,7 @@ function unstoopid_include_init() {
   add_action( "wp_footer", "unstoopid_include_footer" );
   add_filter( "manage_unstoopid_partial_posts_columns","unstoopid_include_manage_columns_header" );
   add_filter( "manage_unstoopid_partial_posts_custom_column","unstoopid_include_manage_columns_content",10,2 );
-  
+  add_filter( "user_can_richedit", "unstoopid_disable_richedit" );
   
   
   
