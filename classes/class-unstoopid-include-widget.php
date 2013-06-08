@@ -31,6 +31,9 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		    )
 		  );
 		  
+		} else {
+		  // Just plop out the text, without templating.
+		  echo $text;
 		}
 	}
 
