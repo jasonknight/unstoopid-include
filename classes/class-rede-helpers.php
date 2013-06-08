@@ -69,7 +69,8 @@ class RedEHelpers {
     @return the rendered, filtered, executed content of the php template file
   */
   public function renderTemplate($template_name, $vars_in_scope = array()) {
-    global $wpdb, $user_ID;
+    global $wpdb, $user_ID, $post, $wp_query, $wp, $wp_locale;
+    
     $vars_in_scope['helpers'] = $this;
     $vars_in_scope['__VIEW__'] = $template_name; //could be user-files.php or somedir/user-files.php
                                                  
