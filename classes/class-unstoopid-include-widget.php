@@ -20,7 +20,7 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		if (isset( $instance['show_title'] ) && $instance['show_title'] == 'yes' ) {
 		  $helpers = new RedEHelpers();
 		  $title = strip_tags($instance['title']);
-		  echo $helpers->renderTemplate('unstoopid-widget.php', array(
+		  echo $helpers->renderTemplate('unstoopid-include-widget.php', array(
 		
 		      'instance'    => $instance,
 		      'text'        => $text,
@@ -61,7 +61,7 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		
 		$partials = get_posts( array('post_type' => 'unstoopid_partial') );
 		
-		echo $helpers->renderTemplate('unstoopid-widget-form.php', array(
+		echo $helpers->renderTemplate('unstoopid-include-widget-form.php', array(
 		
 		    'instance'    => $instance,
 		    'text'        => $text,
