@@ -26,7 +26,7 @@
 	          area.val( area.val() + '[unstoopid_include ids="' + elem.val() + '"]' + "\n");
 	        })(jQuery);
 	      } else {
-	        alert('<?php __("You must have jQuery for auto append to work.","unstoopid_include") ?>');
+	        alert('<?php echo __("You must have jQuery for auto append to work.","unstoopid_include") ?>');
 	      }
 	    }
 	  }
