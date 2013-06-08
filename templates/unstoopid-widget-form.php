@@ -36,4 +36,16 @@
 
 <textarea class="widefat" rows="16" cols="20" id="<?php echo $self->get_field_id('text'); ?>" name="<?php echo $self->get_field_name('text'); ?>"><?php echo $text; ?></textarea>
 
+<p>
+  <label for="<?php echo $self->get_field_id('show_title'); ?>">
+    <?php _e('Show Title?'); ?>
+  </label>
+  <select id="<?php echo $self->get_field_id('show_title'); ?>" 
+	       class="widefat"
+	       name="<?php echo $self->get_field_name('show_title'); ?>" >
+	  <option value="yes" <?php echo ($show_title == 'yes' ? 'selected="selected"' : '') ?>> <?php echo __('Yes','unstoopid_include'); ?> </option>
+	  <option value="no" <?php echo ($show_title == 'no' ? 'selected="selected"' : '') ?>> <?php echo __('No','unstoopid_include'); ?> </option>  
+	</select>
+</p>
+
 

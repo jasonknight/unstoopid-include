@@ -15,7 +15,23 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		
 		$text = apply_filters( 'widget_unstoopid_include', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
 
-		echo do_shortcode($text);
+		$text = do_shortcode($text);
+		
+		if (isset( $instance['show_title'] ) && $instance['show_title'] == 'yes' ) {
+		  $helpers = new RedEHelpers();
+		  $title = strip_tags($instance['title']);
+		  echo $helpers->renderTemplate('unstoopid-widget.php', array(
+		
+		      'instance'    => $instance,
+		      'text'        => $text,
+		      'title'       => $title,
+		      'self'        => $this,
+		      'id'          => $this->id,
+		      
+		    )
+		  );
+		  
+		}
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -24,6 +40,8 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		$instance['title']  = $new_instance['title'];
 		
 		$instance['text']   = $new_instance['text'];
+		
+		$instance['show_title']   = $new_instance['show_title'];
 		
 		return $instance;
 	}
@@ -34,6 +52,7 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
 		
 		$title = strip_tags($instance['title']);
+		isset($instance['show_title']) ? $show_title = $instance['show_title'] : $show_title = 'yes';
 		
 		$text = $instance['text'];
 		
@@ -41,11 +60,12 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		
 		echo $helpers->renderTemplate('unstoopid-widget-form.php', array(
 		
-		    'instance' => $instance,
-		    'text'     => $text,
-		    'title'    => $title,
-		    'partials' => $partials,
-		    'self'     => $this,
+		    'instance'    => $instance,
+		    'text'        => $text,
+		    'title'       => $title,
+		    'show_title'  => $show_title,
+		    'partials'    => $partials,
+		    'self'        => $this,
 		    
 		  )
 		);
