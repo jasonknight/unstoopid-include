@@ -11,7 +11,14 @@ Author: Jason Martin
 Version: 0.1
 Author URI: http://red-e.eu
 */
+define( 'REDE_PLUGIN_BASE_PATH', plugin_dir_path(__FILE__) );
+require_once( plugin_dir_path(__FILE__) . 'classes/class-unstoopid-include-widget.php' );
+
+function unstoopid_widgets_init() {
+  register_widget( 'Widget_UnstoopidInclude' );
+}
 function unstoopid_include_init() {
+  
   add_shortcode('unstoopid_include', 'unstoopid_include_shortcode');
   register_post_type( 'unstoopid_partial', array(
     'labels' => array (
@@ -30,11 +37,16 @@ function unstoopid_include_init() {
     'has_archive' => false,
     'publicly_queryable' => false,
   ));
-  add_action("wp_enqueue_scripts", "unstoopid_include_enqueue_scripts");
-  add_action("wp_footer", "unstoopid_include_footer");
-  add_filter("manage_unstoopid_partial_posts_columns","unstoopid_include_manage_columns_header");
-  add_filter("manage_unstoopid_partial_posts_custom_column","unstoopid_include_manage_columns_content",10,2);
+  add_action( "wp_enqueue_scripts", "unstoopid_include_enqueue_scripts" );
+  add_action( "wp_footer", "unstoopid_include_footer" );
+  add_filter( "manage_unstoopid_partial_posts_columns","unstoopid_include_manage_columns_header" );
+  add_filter( "manage_unstoopid_partial_posts_custom_column","unstoopid_include_manage_columns_content",10,2 );
+  
+  
+  
+  
 }
+
 function unstoopid_include_manage_columns_header($defaults) {
   $defaults['unstoopid_partial_shortcode'] = __('Shortcode','unstoopid_include');
   return $defaults; 
@@ -79,6 +91,10 @@ function unstoopid_include_shortcode($attr) {
 }
 
 add_action("init","unstoopid_include_init",10);
-
+// Let's register the widget
+add_action(
+  'widgets_init',
+  'unstoopid_widgets_init'
+);
 
 ?>
