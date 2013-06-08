@@ -21,7 +21,7 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		  $helpers = new RedEHelpers();
 		  $title = strip_tags($instance['title']);
 		  echo $helpers->renderTemplate('unstoopid-include-widget.php', array(
-		
+		      // Need a variable in the template? Define it here!
 		      'instance'    => $instance,
 		      'text'        => $text,
 		      'title'       => $title,
@@ -62,7 +62,7 @@ class Widget_UnstoopidInclude extends WP_Widget {
 		$partials = get_posts( array('post_type' => 'unstoopid_partial') );
 		
 		echo $helpers->renderTemplate('unstoopid-include-widget-form.php', array(
-		
+		    // Need a variable in the template? Define it here!
 		    'instance'    => $instance,
 		    'text'        => $text,
 		    'title'       => $title,
