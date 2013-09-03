@@ -22,7 +22,7 @@ function unstoopid_include_footer() {
 
 }
 function unstoopid_include_shortcode($attr) {
-  $post = get_post();
+  	global $post;
 
 	static $instance = 0;
 	$instance++;
@@ -53,14 +53,9 @@ function unstoopid_include_shortcode($attr) {
 		'exclude'    => ''
 	), $attr));
 
-  $posts = get_posts( $attr );
-	print_r($posts);
-	die;
 	return $output;
 }
 
 add_action("init","unstoopid_include_init",10);
 add_action("wp_enqueue_scripts", "unstoopid_include_enqueue_scripts");
 add_action("wp_footer", "unstoopid_include_footer");
-
-?>
